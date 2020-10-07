@@ -104,7 +104,7 @@ client.on('message', msg => {
         }
     }
 
-    if (msg.content === '!play' && msg.author.id === "239738629772148737") {
+    if (msg.content === `${config.discord.prefix}-lobbymusic` && msg.author.id === "239738629772148737") {
         if (msg.channel.type === 'dm') return;
 
         const voiceChannel = msg.member.voice.channel;
@@ -113,13 +113,12 @@ client.on('message', msg => {
             return msg.reply('please join a voice channel first!');
         }
 
-        voiceChannel.join().then(connection => {
+        return voiceChannel.join().then(connection => {
             const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
             const dispatcher = connection.play(stream);
 
             dispatcher.on('finish', () => voiceChannel.leave());
         });
-        return
     }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
 });
