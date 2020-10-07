@@ -1,0 +1,28 @@
+{
+  "name": "anonydisbot",
+  "version": "1.0.0",
+  "description": "A bot to post messages on Discord anonymously.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NYP-AI/Anonydisbot.git"
+  },
+  "author": "Dylan Kok (Tokiharu Shunage)",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/NYP-AI/Anonydisbot/issues"
+  },
+  "homepage": "https://github.com/NYP-AI/Anonydisbot#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "arraylist": "^0.1.0",
+    "config-yaml": "^1.1.6",
+    "discord.js": "^12.3.1",
+    "randomcolor": "^0.6.2",
+    "ytdl-core": "^3.3.0"
+  }
+}
