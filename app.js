@@ -42,6 +42,10 @@ client.on('message', msg => {
 
     if (msg.channel.id !== "763456631525605376") return
 
+    console.log(`---------------------\n
+    Author: ${msg.author.username}#${msg.author.discriminator} (${msg.author.id})
+    Payload: ${msg.content.substr(msg.content.indexOf(" ") + 1)}\n`)
+
     // For DMs
     // __-theory
     if (msg.content.toLowerCase().startsWith(`${config.discord.prefix}-theory`)) {
