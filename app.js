@@ -117,7 +117,7 @@ client.on('message', msg => {
 
         musicStream = () => {
             return voiceChannel.join().then(connection => {
-                const stream = ytdl('https://www.youtube.com/watch?v=pSm8QMT6gG0', { filter: 'audioonly' });
+                const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
                 const dispatcher = connection.play(stream);
 
                 dispatcher.on('finish', () => musicStream());
