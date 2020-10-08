@@ -19,6 +19,8 @@ client.on('ready', () => {
     })
 });
 
+var musicChannel = {}
+
 client.on('message', msg => {
     // Prevent self reply
     if (msg.author.bot) return
@@ -110,14 +112,15 @@ client.on('message', msg => {
         if (msg.channel.type === 'dm') return;
 
         const voiceChannel = msg.member.voice.channel;
+        musicChannel = voiceChannel
 
         if (!voiceChannel) {
             return msg.reply('please join a voice channel first!');
         }
 
         musicStream = () => {
-            return voiceChannel.join().then(connection => {
-                const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
+            return musicChannel.join().then(connection => {
+                const stream = ytdl('https://www.youtube.com/watch?v=dJwg-mWj7xY', { filter: 'audioonly' });
                 const dispatcher = connection.play(stream);
 
                 dispatcher.on('finish', () => musicStream());
