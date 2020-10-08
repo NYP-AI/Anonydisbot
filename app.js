@@ -22,7 +22,7 @@ client.on('ready', () => {
 
     vc.join().then(connection => {
         function play(connection) {
-            const stream = ytdl('https://www.youtube.com/watch?v=fh0_sjZGJSc', { filter: 'audioonly' });
+            const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
             const dispatcher = connection.play(stream)
             dispatcher.on('end', play(connection));
         }
