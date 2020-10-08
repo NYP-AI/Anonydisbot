@@ -119,11 +119,15 @@ client.on('message', msg => {
         }
 
         musicChannel.join().then(connection => {
-                const stream = ytdl('https://www.youtube.com/watch?v=fh0_sjZGJSc', { filter: 'audioonly' });
+            function play (connection) {
+                const stream = ytdl('https://www.youtube.com/watch?v=dJwg-mWj7xY', { filter: 'audioonly' });
                 const dispatcher = connection.playStream(stream, streamOptions)
                 dispatcher.on('end', () => { 
                     play(connection);
                 });
+            }
+        
+            play(connection)
         })
     }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
