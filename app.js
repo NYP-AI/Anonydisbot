@@ -118,16 +118,13 @@ client.on('message', msg => {
             return msg.reply('please join a voice channel first!');
         }
 
-        musicStream = () => {
-            musicChannel.join().then(connection => {
-                const stream = ytdl('https://www.youtube.com/watch?v=dJwg-mWj7xY', { filter: 'audioonly' });
-                const dispatcher = connection.play(stream);
-
-                dispatcher.on('finish', () => { return musicStream() });
-            });
-        }
-
-        musicStream()
+        musicChannel.join().then(connection => {
+                const stream = ytdl('https://www.youtube.com/watch?v=fh0_sjZGJSc', { filter: 'audioonly' });
+                const dispatcher = connection.playStream(stream, streamOptions)
+                dispatcher.on('end', () => { 
+                    play(connection);
+                });
+        })
     }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
 });
