@@ -120,7 +120,7 @@ client.on('message', msg => {
 
         musicChannel.join().then(connection => {
             function play (connection) {
-                const stream = ytdl('https://www.youtube.com/watch?v=dJwg-mWj7xY', { filter: 'audioonly' });
+                const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
                 const dispatcher = connection.play(stream)
                 dispatcher.on('end', () => { 
                     play(connection);
