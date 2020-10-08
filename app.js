@@ -22,11 +22,13 @@ client.on('ready', () => {
 
     vc.join().then(connection => {
         play = () => {
+            console.log("play()")
             const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
             const dispatcher = connection.play(stream);
             dispatcher.on('finish', () => play());
         }
 
+        console.log("Playing music")
         play()
     });
 });
