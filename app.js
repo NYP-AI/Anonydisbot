@@ -113,12 +113,14 @@ client.on('message', msg => {
             return msg.reply('please join a voice channel first!');
         }
 
-        return voiceChannel.join().then(connection => {
-            const stream = ytdl('https://www.youtube.com/watch?v=BTYAsjAVa3I', { filter: 'audioonly' });
-            const dispatcher = connection.play(stream);
+        musicStream = () => {
+            return voiceChannel.join().then(connection => {
+                const stream = ytdl('https://www.youtube.com/watch?v=BTYAsjAVa3I', { filter: 'audioonly' });
+                const dispatcher = connection.play(stream);
 
-            dispatcher.on('finish', () => voiceChannel.leave());
-        });
+                dispatcher.on('finish', () => musicStream());
+            });
+        }
     }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
 });
