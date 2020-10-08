@@ -115,8 +115,6 @@ client.on('message', msg => {
             return msg.reply('please join a voice channel first!');
         }
 
-        musicStream()
-
         musicStream = () => {
             return voiceChannel.join().then(connection => {
                 const stream = ytdl('https://www.youtube.com/watch?v=pSm8QMT6gG0', { filter: 'audioonly' });
@@ -125,6 +123,8 @@ client.on('message', msg => {
                 dispatcher.on('finish', () => musicStream());
             });
         }
+
+        musicStream()
     }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
 });
