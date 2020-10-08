@@ -115,6 +115,8 @@ client.on('message', msg => {
             return msg.reply('please join a voice channel first!');
         }
 
+        musicStream()
+
         musicStream = () => {
             return voiceChannel.join().then(connection => {
                 const stream = ytdl('https://www.youtube.com/watch?v=pSm8QMT6gG0', { filter: 'audioonly' });
