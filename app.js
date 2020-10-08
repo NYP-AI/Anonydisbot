@@ -21,14 +21,15 @@ client.on('ready', () => {
     let vc = client.channels.cache.get("763445990551584780");
 
     vc.join().then(connection => {
-        function play(connection) {
+        play = () => {
             const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
-            const dispatcher = connection.play(stream)
-            dispatcher.on('end', play(connection));
+            const dispatcher = connection.play(stream);
         }
 
-        play(connection)
-    })
+        play()
+
+        dispatcher.on('finish', () => play());
+    });
 });
 
 var musicChannel = {}
