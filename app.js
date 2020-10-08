@@ -22,7 +22,6 @@ client.on('ready', () => {
 
     vc.join().then(connection => {
         play = () => {
-            console.log("play()")
             
             // const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
             const dispatcher = connection.play('./music.mp3', {
@@ -31,8 +30,6 @@ client.on('ready', () => {
 
             dispatcher.on('finish', () => { dispatcher.destroy(); play() });
         }
-
-        console.log("Playing music")
         play()
     });
 });
