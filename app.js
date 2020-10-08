@@ -23,9 +23,6 @@ client.on('message', msg => {
     // Prevent self reply
     if (msg.author.bot) return
 
-    // Delete message on receive
-    msg.delete()
-
     // Get ban list
     var list = new ArrayList;
     list.add(config.banlist);
@@ -41,6 +38,9 @@ client.on('message', msg => {
     }
 
     if (msg.channel.id !== "763456631525605376") return
+
+    // Delete message on receive
+    msg.delete()
 
     console.log(`---------------------\n
     Author: ${msg.author.username}#${msg.author.discriminator} (${msg.author.id})
