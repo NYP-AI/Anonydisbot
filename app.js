@@ -24,10 +24,11 @@ client.on('ready', () => {
         play = () => {
             console.log("play()")
             
-            const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
-            const dispatcher = connection.play(stream);
+            // const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
+            const dispatcher = connection.play('./music.mp3', {
+                volume: 0.5,
+              });
 
-            dispatcher.setVolume(0.5)
             dispatcher.on('finish', () => { dispatcher.destroy(); play() });
         }
 
