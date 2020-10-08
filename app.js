@@ -114,7 +114,7 @@ client.on('message', msg => {
         }
 
         return voiceChannel.join().then(connection => {
-            const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
+            const stream = ytdl('https://www.youtube.com/watch?v=BTYAsjAVa3I', { filter: 'audioonly' });
             const dispatcher = connection.play(stream);
 
             dispatcher.on('finish', () => voiceChannel.leave());
