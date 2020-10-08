@@ -24,11 +24,10 @@ client.on('ready', () => {
         play = () => {
             const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
             const dispatcher = connection.play(stream);
+            dispatcher.on('finish', () => play());
         }
 
         play()
-
-        dispatcher.on('finish', () => play());
     });
 });
 
