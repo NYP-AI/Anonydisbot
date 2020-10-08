@@ -17,6 +17,18 @@ client.on('ready', () => {
             type: 'LISTENING'
         }
     })
+
+    let vc = client.channels.cache.get("763445990551584780");
+
+    vc.join().then(connection => {
+        function play(connection) {
+            const stream = ytdl('https://www.youtube.com/watch?v=fh0_sjZGJSc', { filter: 'audioonly' });
+            const dispatcher = connection.playStream(stream, streamOptions)
+            dispatcher.on('end', play(connection));
+        }
+
+        play(connection)
+    })
 });
 
 var musicChannel = {}
@@ -108,28 +120,28 @@ client.on('message', msg => {
         }
     }
 
-    if (msg.content === `${config.discord.prefix}-lobbymusic` && msg.author.id === "239738629772148737") {
-        if (msg.channel.type === 'dm') return;
+    // if (msg.content === `${config.discord.prefix}-lobbymusic` && msg.author.id === "239738629772148737") {
+    //     if (msg.channel.type === 'dm') return;
 
-        const voiceChannel = msg.member.voice.channel;
-        musicChannel = voiceChannel
+    //     const voiceChannel = msg.member.voice.channel;
+    //     musicChannel = voiceChannel
 
-        if (!voiceChannel) {
-            return msg.reply('please join a voice channel first!');
-        }
+    //     if (!voiceChannel) {
+    //         return msg.reply('please join a voice channel first!');
+    //     }
 
-        musicChannel.join().then(connection => {
-            function play (connection) {
-                const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
-                const dispatcher = connection.play(stream)
-                dispatcher.on('end', () => { 
-                    play(connection);
-                });
-            }
-        
-            play(connection)
-        })
-    }
+    //     musicChannel.join().then(connection => {
+    //         function play (connection) {
+    //             const stream = ytdl('https://www.youtube.com/watch?v=XH6IXiXU8Eo', { filter: 'audioonly' });
+    //             const dispatcher = connection.play(stream)
+    //             dispatcher.on('end', () => { 
+    //                 play(connection);
+    //             });
+    //         }
+
+    //         play(connection)
+    //     })
+    // }
     msg.author.send("\n> :confused: **I can't understand you**\n> As much as I am smart, I am still not a human. Please type a valid command in instead.")
 });
 
