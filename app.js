@@ -119,11 +119,11 @@ client.on('message', msg => {
         }
 
         musicStream = () => {
-            return musicChannel.join().then(connection => {
+            musicChannel.join().then(connection => {
                 const stream = ytdl('https://www.youtube.com/watch?v=dJwg-mWj7xY', { filter: 'audioonly' });
                 const dispatcher = connection.play(stream);
 
-                dispatcher.on('finish', () => musicStream());
+                dispatcher.on('finish', () => { return musicStream() });
             });
         }
 
